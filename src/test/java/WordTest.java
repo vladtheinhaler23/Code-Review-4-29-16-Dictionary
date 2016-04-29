@@ -29,4 +29,23 @@ public class WordTest {
     Word.clear();
     assertEquals(0, Word.all().size());
   }
+
+  @Test
+  public void getId_instantiatesWithAnId_1(){
+    Word.clear();
+    Word myWord = new Word("Tonsil");
+    assertEquals(1, myWord.getId());
+  }
+
+  @Test
+  public void find_returnsWordWithCorrectId_secondWord() {
+    Word myFirstWord = new Word("Tonsil");
+    Word mySecondWord = new Word("Throat");
+    assertEquals(Word.find(mySecondWord.getId()), mySecondWord);
+  }
+
+  @Test
+  public void find_returnsNullWhenNoWordIsFound_null() {
+    assertTrue(Word.find(999) == null);
+  }
 }
