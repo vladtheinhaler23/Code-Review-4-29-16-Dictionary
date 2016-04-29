@@ -14,4 +14,12 @@ public class WordTest {
     Word myWord =  new Word("Tonsil");
     assertEquals("Tonsil", myWord.getName());
   }
+
+  @Test
+  public void all_returnsAListOfAllWordsInputted_true() {
+    Word myFirstWord = new Word("Tonsil");
+    Word mySecondWord = new Word("Throat");
+    assertTrue(Word.all().contains(myFirstWord));
+    assertTrue(Word.all().contains(mySecondWord));
+  }
 }
