@@ -17,4 +17,8 @@ public class Word {
   public static ArrayList<Word> all() {
     return instances;
   }
+
+  public static void clear() {
+    instances.clear();
+  }
 }
