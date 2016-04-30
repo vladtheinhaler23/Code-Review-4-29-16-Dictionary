@@ -3,6 +3,12 @@ import static org.junit.Assert.*;
 
 public class WordTest {
 
+  @After
+  public void tearDown() {
+    Word.clear();
+    Definition.clear();
+  }
+
   @Test
   public void Word_instantiatesCorrectly_true() {
     Word myWord = new Word("Tonsil");
@@ -47,5 +53,19 @@ public class WordTest {
   @Test
   public void find_returnsNullWhenNoWordIsFound_null() {
     assertTrue(Word.find(999) == null);
+  }
+
+  @Test
+  public void getDefinitions_initallyReturnsAnEmptyArrayList_ArrayList() {
+    Word myWord = new Word("Tonsil");
+    assertEquals(0, myWord.getDefinitions().size());
+  }
+
+  @Test
+  public void addDefiniton_addsDefinitionsToList_true() {
+    Word myWord = new Word("Tonsil");
+    Definition myDefinition = new Definition("Part of the throat");
+    myWord.addDefinition(myDefinition);
+    assertTrue(myWord.getDefinitions().contains(myDefinition));
   }
 }
