@@ -52,4 +52,30 @@ public class AppTest extends FluentTest {
     click("a", withText("Tonsil"));
     assertThat(pageSource().contains("Tonsil"));
   }
+
+  @Test
+  public void wordDefinitionFormIsDisplayed() {
+    goTo("http://localhost:4567/words/new");
+    fill("#wordInput").with("Tonsil");
+    submit(".btn");
+    click("a", withText("View Your Dictionary"));
+    click("a", withText("Tonsil"));
+    click("a", withText("Add a new definition"));
+    assertThat(pageSource()).contains("Add a definition to Tonsil");
+  }
+
+  @Test
+  public void definitionIsAddedAndDisplayed() {
+    goTo("http://localhost:4567/words/new");
+    fill("#wordInput").with("Tonsil");
+    submit(".btn");
+    click("a", withText("View Your Dictionary"));
+    click("a", withText("Tonsil"));
+    click("a", withText("Add a new task"));
+    fill("#definition").with("A part of the throat");
+    submit(".btn");
+    click("a", withText("View words"));
+    click("a", withText("Tonsil"));
+    assertThat(pageSource()).contains("A part of the throat");
+  }
 }

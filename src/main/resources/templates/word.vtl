@@ -1,3 +1,10 @@
-<h1>$word.getName()</h1>
+<h1>$word.getName() definitions:</h1>
 
-<a href="/words">All Words</a>
+<ul>
+  #foreach($word in $word.getDefinitions())
+   <li>$word.getDefinition()</li>
+  #end
+</ul>
+
+<a href="/words/$word.getId()/definitions/new">Add a new definition</a>
+<a href="/words">All words</a>
