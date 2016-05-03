@@ -55,6 +55,7 @@ public class AppTest extends FluentTest {
 
   @Test
   public void wordDefinitionFormIsDisplayed() {
+    Word.clear();
     goTo("http://localhost:4567/words/new");
     fill("#wordInput").with("Tonsil");
     submit(".btn");
@@ -66,15 +67,16 @@ public class AppTest extends FluentTest {
 
   @Test
   public void definitionIsAddedAndDisplayed() {
+    Word.clear();
     goTo("http://localhost:4567/words/new");
     fill("#wordInput").with("Tonsil");
     submit(".btn");
     click("a", withText("View Your Dictionary"));
     click("a", withText("Tonsil"));
-    click("a", withText("Add a new task"));
+    click("a", withText("Add a new definition"));
     fill("#definition").with("A part of the throat");
     submit(".btn");
-    click("a", withText("View words"));
+    click("a", withText("View Word List"));
     click("a", withText("Tonsil"));
     assertThat(pageSource()).contains("A part of the throat");
   }
